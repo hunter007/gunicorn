@@ -25,8 +25,8 @@
 异步 workers
 =============
 
-如果你希望在请求处理期间暂停代码执行，你可能也想安装 Eventlet_ 或者 Gevent_。当你考虑着两种
-worker 类型之一时，查看 `设计`_ 以了解更多信息。
+如果希望在请求处理期间暂停代码执行，你可能会安装 Eventlet_ 或者 Gevent_。当考虑这两种
+worker 类型之一时，看看 `设计`_ 可以了解更多信息。
 
 ::
 
@@ -36,10 +36,10 @@ worker 类型之一时，查看 `设计`_ 以了解更多信息。
 
 .. note::
     如果安装 ``greenlet`` 失败，你可能需要安装 Python 头文件。这在多数包管理系统中都可用。
-    在 Ubuntu 的``apt-get``中叫做 ``python-dev``。
+    在 Ubuntu 的 ``apt-get`` 中叫做 ``python-dev``。
 
     Gevent_ 也依赖 ``libevent`` 1.4.x 或者 2.0.4。这可能是在包管理器中最新的版本。如果
-    Gevent_ 构建失败，既使已经安装了 lebevent_ ，这是最可能的原因。
+    Gevent_ 构建失败，既使安装了 libevent_ ，这是最可能的原因。
 
 
 Debian GNU/Linux
@@ -48,14 +48,13 @@ Debian GNU/Linux
 如果你在使用 Debian GNU/Linux，如非想在 virtualenv 中使用不同版本的 Gunicorn，建议你使用
 系统的包管理器安装 Gunicorn。这有几个好处：
 
-* 安装简单：根据在 ``/etc/gunicorn.d``的配置，自动启动多个 Gunicorn 实例。
+* 安装简单：根据在 ``/etc/gunicorn.d`` 的配置，自动启动多个 Gunicorn 实例。
 
-* 合理的日志默认位置（``/var/log/gunicorn``）。通过``logrotate``日志被自动循环和压缩。
+* 合理的日志默认位置（``/var/log/gunicorn``）。通过 ``logrotate`` ，日志被自动循环和压缩。
 
 * 增强的安全性：可以容易地为每个 Gunicorn 实例分配不同的用户/组。
 
-* 合理的升级路径：升级到新版本需要更少的停机时间，用配置项处理冲突，不兼容时快速回滚。也可以在几
-  秒内就从系统中清除掉 Gunicorn。
+* 合理的升级路径：升级到新版本需要更少的停机时间，用配置项处理冲突，不兼容时快速回滚。也可以在几秒内就从系统中清除掉 Gunicorn。
 
 稳定版 ("jessie")
 -----------------
@@ -80,7 +79,7 @@ Debian_ 的稳定版中，Gunicorn 的版本是 19.0(2014年6月)。你可以使
 老版本 ("wheezy")
 --------------------
 
-Debian_旧的稳定版中，Gunicorn 版本是 0.14.5（2012年6月）。要安装则执行下面的命令::
+Debian_ 老的稳定版中，Gunicorn 版本是 0.14.5（2012年6月）。要安装则执行下面的命令::
 
     $ sudo apt-get install gunicorn
 

@@ -1,46 +1,37 @@
-.. _configuration:
+.. _配置:
 
 ======================
-Configuration Overview
+概述
 ======================
 
-Gunicorn pulls configuration information from three distinct places.
+Gunicorn 从三个地方获取配置信息。
 
-The first place that Gunicorn will read configuration from is the framework
-specific configuration file. Currently this only affects Paster applications.
+第一个位置是框架的配置文件，当前仅仅对 Paster 有效。
 
-The second source of configuration information is a configuration file that is
-optionally specified on the command line. Anything specified in the Gunicorn
-config file will override any framework specific settings.
+第二个位置是通过命令行指定的配置文件。命令行指定的配置文件的内容会覆盖掉框架的配置。
 
-Lastly, the command line arguments used to invoke Gunicorn are the final place
-considered for configuration settings. If an option is specified on the command
-line, this is the value that will be used.
+第三个位置是命令行参数。如果通过命令行指定一个参数，Gunicorn 最终会使用这个值。
 
-Once again, in order of least to most authoritative:
-    1. Framework Settings
-    2. Configuration File
-    3. Command Line
+也就是说，配置的优先级从低到高：
+    1. 框架配置
+    2. 配置文件
+    3. 命令行指定
 
 
 .. note::
 
-    To check your configuration when using the command line or the
-    configuration file you can run the following command::
+    当使用领命航指定参数或者在命令行传入配置文件时，可以检测配置是否正确::
 
         $ gunicorn --check-config APP_MODULE
 
-    It also allows you to know if your application can be launched.
+    这也让你知道了应用是否能正常启动。
 
 
-Command Line
-============
+命令行指定
+==========
 
-If an option is specified on the command line, it overrides all other values
-that may have been specified in the app specific settings, or in the optional
-configuration file. Not all Gunicorn settings are available to be set from the
-command line. To see the full list of command line settings you can do the
-usual::
+如果在命令行指定了一个选项，这将覆盖应用中的配置和配置文件中的配置。但也不是 Gunicorn 的所有
+选项都可以在命令行指定。要看命令行支持的选项列表，可以执行::
 
     $ gunicorn -h
 
@@ -48,41 +39,36 @@ There is also a ``--version`` flag available to the command line scripts that
 isn't mentioned in the list of :ref:`settings <settings>`.
 
 
-Configuration File
-==================
+配置文件
+========
 
-The configuration file should be a valid Python source file. It only needs to
-be readable from the file system. More specifically, it does not need to be
-importable. Any Python is valid. Just consider that this will be run every time
-you start Gunicorn (including when you signal Gunicorn to reload).
+配置文件就是一个 Python 源代码文件。只要从文件系统可读即可。比较特殊的是，不需要导入它。任何
+Python代码都可以出现在这个文件中。每次 Gunicorn 启动的时候（包括给 Gunicorn 发送reload信息）
+会执行一次这个配置文件。
 
-To set a parameter, just assign to it. There's no special syntax. The values
-you provide will be used for the configuration values.
+要设置一个选项，给它赋值即可。没有特殊的语法，你给它什么值，Gunicorn 就用什么值。
 
-For instance::
+比如::
 
     import multiprocessing
 
     bind = "127.0.0.1:8000"
     workers = multiprocessing.cpu_count() * 2 + 1
 
-All the settings are mentioned in the :ref:`settings <settings>` list.
+更多的选项在 :ref:`settings111 <settings>` 中。
 
 
-Framework Settings
-==================
-
-Currently, only Paster applications have access to framework specific
-settings. If you have ideas for providing settings to WSGI applications or
-pulling information from Django's settings.py feel free to open an issue_ to
-let us know.
+框架配置
+========
+当前仅 Paster 应用支持框架配置。如果你关于为 WSGI 应用提供配置，或者获取 Django 的 settings.py 信息，
+请打开一个 `issue`_，让我们知道。
 
 .. _issue: http://github.com/benoitc/gunicorn/issues
 
-Paster Applications
--------------------
+Paster 应用
+------------
 
-In your INI file, you can specify to use Gunicorn as the server like such:
+在 INI 文件中，可以指定 Gunicorn 是应用服务器：
 
 .. code-block:: ini
 
@@ -93,6 +79,5 @@ In your INI file, you can specify to use Gunicorn as the server like such:
     workers = 2
     proc_name = brim
 
-Any parameters that Gunicorn knows about will automatically be inserted into
-the base configuration. Remember that these will be overridden by the config
-file and/or the command line.
+Gunicorn 能识别的参数会被自动地插入基本配置中。
+请记住：这些选项会被 Gunicorn 配置文件或者命令行参数覆盖。
