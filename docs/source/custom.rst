@@ -10,9 +10,6 @@
 
 以下是一个小例子。我们创建一个非常简单的 WSGI 应用：
 
-.. 翻译者提示::
-    以下代码是example/standalone_app.py的内容。为了使读者方便，复制到此。
-
 .. code-block:: python
 
     #!/usr/bin/env python
@@ -74,3 +71,6 @@
             'workers': number_of_workers(),
         }
         StandaloneApplication(handler_app, options).run()
+
+.. note::
+    以上代码是example/standalone_app.py的内容。为了使读者方便，复制到此。
