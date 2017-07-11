@@ -34,7 +34,7 @@ worker 类型之一时，看看 `设计`_ 可以了解更多信息。
     $ pip install eventlet  # eventlet workers需要
     $ pip install gevent    # gevent workers需要
 
-.. note::
+.. 提示::
     如果安装 ``greenlet`` 失败，你可能需要安装 Python 头文件。这在多数包管理系统中都可用。
     在 Ubuntu 的 ``apt-get`` 中叫做 ``python-dev``。
 
