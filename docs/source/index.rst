@@ -4,43 +4,41 @@ Gunicorn - WSGI server
 
 .. image:: _static/gunicorn.png
 
-:Website: http://gunicorn.org
-:Source code: https://github.com/benoitc/gunicorn
-:Issue tracker: https://github.com/benoitc/gunicorn/issues
+:网站: http://gunicorn.org
+:源代码: https://github.com/benoitc/gunicorn
+:问题跟踪: https://github.com/benoitc/gunicorn/issues
 :IRC: ``#gunicorn`` on Freenode
-:Mail list: http://lists.gunicorn.org/user/
+:邮件列表: http://lists.gunicorn.org/user/
 
-Gunicorn 'Green Unicorn' is a Python WSGI HTTP Server for UNIX. It's a pre-fork
-worker model ported from Ruby's Unicorn project. The Gunicorn server is broadly
-compatible with various web frameworks, simply implemented, light on server
-resources, and fairly speedy.
+Gunicorn（Green Unicorn）是一个 WSGI 服务器。它从 Ruby 的 Unicorn 项目移植过来，使用 prefork
+工作模型。Gunicorn 服务器广泛地兼容大量web框架，实现简单，在占用服务器资源上是轻量级的，并且相当快！
 
-Features
---------
+特性
+----
 
-* Natively supports WSGI, Django, and Paster
-* Automatic worker process management
-* Simple Python configuration
-* Multiple worker configurations
-* Various server hooks for extensibility
-* Compatible with Python 2.x >= 2.6 or 3.x >= 3.2
+* 原生支持 WSGI、Django 和 Paster
+* worker 进程自动管理
+* 使用 Python 进行配置，并且简单
+* 支持多个 worker 配置
+* 扩展性：支持各种服务器钩子
+* Python兼容性： >=2.6 或者 >= 3.2
 
 
-Contents
+目录
 --------
 
 .. toctree::
     :maxdepth: 2
 
-    install
-    run
-    configure
-    settings
-    instrumentation
-    deploy
-    signals
-    custom
-    design
-    faq
-    community
-    news
+    安装
+    运行
+    配置
+    设置
+    仪表
+    部署
+    信号
+    自定义
+    设计
+    常见问题
+    社区
+    新闻

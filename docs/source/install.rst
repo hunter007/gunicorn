@@ -1,123 +1,105 @@
 ============
-Installation
+安装
 ============
 
 .. highlight:: bash
 
-:Requirements: **Python 2.x >= 2.6** or **Python 3.x >= 3.2**
+:需求: **Python 2.x >= 2.6** 或者 **Python 3.x >= 3.2**
 
-To install the latest released version of Gunicorn::
+安装最新版本::
 
   $ pip install gunicorn
 
-From Source
+源代码安装
 ===========
 
-You can install Gunicorn from source just as you would install any other
-Python package::
+执行下面的命令从源代码库安装::
 
     $ pip install git+https://github.com/benoitc/gunicorn.git
 
-This will allow you to keep up to date with development on GitHub::
+要拉取最新代码的话，执行::
 
     $ pip install -U git+https://github.com/benoitc/gunicorn.git
 
 
-Async Workers
+异步 workers
 =============
 
-You may also want to install Eventlet_ or Gevent_ if you expect that your
-application code may need to pause for extended periods of time during request
-processing. Check out the `design docs`_ for more information on when you'll
-want to consider one of the alternate worker types.
+如果你希望在请求处理期间暂停代码执行，你可能也想安装 Eventlet_ 或者 Gevent_。当你考虑着两种
+worker 类型之一时，查看 `设计`_ 以了解更多信息。
 
 ::
 
-    $ pip install greenlet  # Required for both
-    $ pip install eventlet  # For eventlet workers
-    $ pip install gevent    # For gevent workers
+    $ pip install greenlet  # 两者都需要
+    $ pip install eventlet  # eventlet workers需要
+    $ pip install gevent    # gevent workers需要
 
 .. note::
-    If installing ``greenlet`` fails you probably need to install
-    the Python headers. These headers are available in most package
-    managers. On Ubuntu the package name for ``apt-get`` is
-    ``python-dev``.
+    如果安装 ``greenlet`` 失败，你可能需要安装 Python 头文件。这在多数包管理系统中都可用。
+    在 Ubuntu 的``apt-get``中叫做 ``python-dev``。
 
-    Gevent_ also requires that ``libevent`` 1.4.x or 2.0.4 is installed.
-    This could be a more recent version than what is available in your
-    package manager. If Gevent_ fails to build even with libevent_
-    installed, this is the most likely reason.
+    Gevent_ 也依赖 ``libevent`` 1.4.x 或者 2.0.4。这可能是在包管理器中最新的版本。如果
+    Gevent_ 构建失败，既使已经安装了 lebevent_ ，这是最可能的原因。
 
 
 Debian GNU/Linux
 ================
 
-If you are using Debian GNU/Linux and it is recommended that you use
-system packages to install Gunicorn except maybe when you want to use
-different versions of Gunicorn with virtualenv. This has a number of
-advantages:
+如果你在使用 Debian GNU/Linux，如非想在 virtualenv 中使用不同版本的 Gunicorn，建议你使用
+系统的包管理器安装 Gunicorn。这有几个好处：
 
-* Zero-effort installation: Automatically starts multiple Gunicorn instances
-  based on configurations defined in ``/etc/gunicorn.d``.
+* 安装简单：根据在 ``/etc/gunicorn.d``的配置，自动启动多个 Gunicorn 实例。
 
-* Sensible default locations for logs (``/var/log/gunicorn``). Logs
-  can be automatically rotated and compressed using ``logrotate``.
+* 合理的日志默认位置（``/var/log/gunicorn``）。通过``logrotate``日志被自动循环和压缩。
 
-* Improved security: Can easily run each Gunicorn instance with a dedicated
-  UNIX user/group.
+* 增强的安全性：可以容易地为每个 Gunicorn 实例分配不同的用户/组。
 
-* Sensible upgrade path: Upgrades to newer versions result in less downtime,
-  handle conflicting changes in configuration options, and can be quickly
-  rolled back in case of incompatibility. The package can also be purged
-  entirely from the system in seconds.
+* 合理的升级路径：升级到新版本需要更少的停机时间，用配置项处理冲突，不兼容时快速回滚。也可以在几
+  秒内就从系统中清除掉 Gunicorn。
 
-stable ("jessie")
+稳定版 ("jessie")
 -----------------
 
-The version of Gunicorn in the Debian_ "stable" distribution is 19.0 (June
-2014). You can install it using::
+Debian_ 的稳定版中，Gunicorn 的版本是 19.0(2014年6月)。你可以使用下面命令安装::
 
     $ sudo apt-get install gunicorn
 
-You can also use the most recent version by using `Debian Backports`_.
-First, copy the following line to your ``/etc/apt/sources.list``::
+也可以通过 `Debian Backports`_ 使用最新版本。首先，复制下面这行代码到
+``/etc/apt/siources.list``::
 
     deb http://backports.debian.org/debian-backports jessie-backports main
 
-Then, update your local package lists::
+然后更新本地包列表::
 
     $ sudo apt-get update
 
-You can then install the latest version using::
+使用下面命令安装最新版本::
 
     $ sudo apt-get -t jessie-backports install gunicorn
 
-oldstable ("wheezy")
+老版本 ("wheezy")
 --------------------
 
-The version of Gunicorn in the Debian_ "oldstable" distribution is 0.14.5 (June
-2012). you can install it using::
+Debian_旧的稳定版中，Gunicorn 版本是 0.14.5（2012年6月）。要安装则执行下面的命令::
 
     $ sudo apt-get install gunicorn
 
-You can also use the most recent version by using `Debian Backports`_.
-First, copy the following line to your ``/etc/apt/sources.list``::
+你还可以通过 `Debian Backports`_ 安装最新版本。首先，复制下面代码到 ``/etc/apt/sources.list``::
 
     deb http://backports.debian.org/debian-backports wheezy-backports main
 
-Then, update your local package lists::
+然后更新本地包列表::
 
     $ sudo apt-get update
 
-You can then install the latest version using::
+使用下面命令安装最新版本::
 
     $ sudo apt-get -t wheezy-backports install gunicorn
 
-Testing ("stretch") / Unstable ("sid")
+测试版 ("stretch") / 非稳定版 ("sid")
 --------------------------------------
 
-"stretch" and "sid" contain the latest released version of Gunicorn. You can
-install it in the usual way::
+"stretch" 和 "sid" 包含 Gunicorn 的最新版，你可以用之前的方法安装::
 
     $ sudo apt-get install gunicorn
 
@@ -125,14 +107,13 @@ install it in the usual way::
 Ubuntu
 ======
 
-Ubuntu_ 12.04 (trusty) or later contains Gunicorn package by default so that
-you can install it in the usual way::
+Ubuntu_ 12.04 (trusty) 和之后的版本默认包含 Gunicorn，所以安装很简单::
 
     $ sudo apt-get update
     $ sudo apt-get install gunicorn
 
 
-.. _`design docs`: design.html
+.. _`设计`: design.html
 .. _Eventlet: http://eventlet.net
 .. _Gevent: http://gevent.org
 .. _libevent: http://monkey.org/~provos/libevent
