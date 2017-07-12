@@ -5,12 +5,12 @@
 .. highlight:: bash
 
 可以通过命令行运行 Gunicorn，也可以和 Django 或者 Paster 集成。
-要在生产环境中部署 Gunicorn，请查看 :doc: `部署`。
+要在生产环境中部署 Gunicorn，请查看 :doc:`部署`。
 
 命令行
 ========
 
-安装完成 Gunicorn 之后，可以通过命令行执行 gunicorn。直接执行``gnuicorn`` 即可。
+安装完成 Gunicorn 之后，可以通过命令行执行 gunicorn。直接执行 ``gunicorn`` 即可。
 
 .. _gunicorn-cmd:
 
@@ -22,7 +22,7 @@ gunicorn
     $ gunicorn [OPTIONS] APP_MODULE
 
 ``APP_MODULE`` 的格式为： ``$(MODULE_NAME):$(VARIABLE_NAME)``。
-模块名是用“.”分隔的完整路径。变量名则必须在这个模块内可找到，引用一个 WSGI 可调用对象。
+$(MODULE_NAME)是用.分隔的完整路径。变量名则必须在这个模块内可找到，并引用一个 WSGI 可调用对象。
 
 用以下代码作为例子:
 
@@ -51,8 +51,8 @@ gunicorn
   ``$(PATH)``, ``file:$(PATH)``, or ``python:$(MODULE_NAME)``.
 * ``-b BIND, --bind=BIND`` - 指定 Server 的绑定信息. Server sockets支持以下格式：
   ``$(HOST)``, ``$(HOST):$(PORT)``, 或者 ``unix:$(PATH)``. IP 也可用于 ``$(HOST)``。
-* ``-w WORKERS, --workers=WORKERS`` - worker 进程数. 这个值通常是 2-4个进程/核。
-  查看 :ref:`faq`以获得如何调优此参数的信息。
+* ``-w WORKERS, --workers=WORKERS`` - worker 进程数。 这个值通常是 2-4个进程/核。
+  查看 :ref:`faq` 以获得如何调优此参数的信息。
 * ``-k WORKERCLASS, --worker-class=WORKERCLASS`` - 要运行的 worker 进程类型。
    You'll definitely want to read the production page for the
   implications of this parameter. 可用的值有： ``sync``, ``eventlet``, ``gevent``, 或者
